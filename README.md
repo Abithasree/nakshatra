@@ -1,4 +1,4 @@
-#Nakshatra
+# Nakshatra
 
 *an astronomy club website made by me for my hcl internship :)*
 
@@ -18,6 +18,6 @@ Nakshatra is an interactive web application designed to connect astronomy enthus
 
 7.  host Events: schedule the events and also display the upcoming events
 
-#Future Scope Of the project
+# Future Scope Of the project
 
 The astronomy club website I've created has a clear objective: to centralize and share knowledge in the field of astronomy. Looking ahead, we plan to enhance this objective in two ways. Firstly, the website will become a hub for collaborative idea generation, fostering innovation within our community. Secondly, we will offer an online book borrowing system focused on astronomy, allowing members to expand their knowledge, with books returned after a designated period. Together, these initiatives ensure our commitment to knowledge dissemination and enrichment within the club.

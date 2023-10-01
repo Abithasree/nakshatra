@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APOD Random Generator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="welcome.css">
+</head>
+
+<style>
+    body{
+        background-image: url('whitespace.jpg');
+        background-color: #acacac;
+    }
+    .apod-container{
+        color: black;
+        max-height: 500px;
+        width: 500px;
+        /* display: flex;
+        flex-direction: column; */
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        margin: auto auto;
+    }
+    #apod-image{
+        /* width: 500px; */
+        height: 300px;
+    }
+    .content2{
+        background-color: #9fa4b8;
+        border-radius: 15px;
+    }
+
+    .nav{
+   background-color: #84879a;
+}
+.logo{
+    background-image: url('images\png\logo-no-background.png');
+}
+    
+</style>
+<body>
+
+    <nav class="navbar">
+        <div class="container">
+       
+            <a href="http://localhost/hcl%20project%20test/welcome.php" class="logo"> <img src="images\png\logo-white-small.png" alt="Astronomy Club Logo"></a>
+            <ul class="nav-links">
+                <li><a href="http://localhost/hcl%20project%20test/welcome.php">Home</a></li>
+                
+                <li><a href="http://127.0.0.1:5500/game.html">Game</a></li>
+                <li class="dropdown">
+                    <a href="#">Events</a>
+                    <div class="dropdown-content">
+                        <a href="http://localhost/hcl%20project%20test/event_form.php">Host an Event</a>
+                        <a href="http://localhost/hcl%20project%20test/display_events.php">Ongoing Events</a>
+                        
+                        
+                    </div>
+                </li>
+                <li><a href="http://localhost:5000/">Chat</a></li>
+                
+                <!-- ... (previous HTML code) ... -->
+                <li class="dropdown">
+                    <a href="#">News</a>
+                    <div class="dropdown-content">
+                        <a href="http://127.0.0.1:5500/spod.html">space pic of day</a>
+                        <a href="http://127.0.0.1:5500/spaceWnews.html">space weather news</a>
+                        <a href="http://127.0.0.1:5500/meteors.html">meteorology news</a>
+                        
+                    </div>
+                </li>
+<!-- ... (continue with other navigation items) ... -->
+<!-- #region -->    <li class="dropdown">
+                    <a href="#">Others</a>
+                    <div class="dropdown-content">
+                        <a href="#">Pitch your idea!</a>
+                        <a href="#">Borrow books</a>
+                        
+                        
+                    </div>
+                </li>   
+
+                <!-- <li><a href="#">Gallery</a></li> -->
+                
+                <li> <a href="http://localhost/hcl%20project%20test/logout.php">Logout</a></li>
+            </ul>
+        </div>
+    </nav><br><br>
+
+
+    <div class="apod-container">
+        <h1>Astronomy Picture of the Day</h1>
+        <img id="apod-image" src="" alt="APOD">
+        <div class="content2">
+        <h3 id="apod-title"></h3>
+        <p id="apod-explanation"></p></div>
+        <button id="generate-button">Generate Random APOD</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+<script>
+    const apiKey = 'j10VPe5poiUyN9k2sqOG4v5g3zCVDvhV1fOXYFB3';
+const apiUrl = `https://api.nasa.gov/planetary/apod?api_key=${apiKey}`;
+
+const apodImage = document.getElementById('apod-image');
+const apodTitle = document.getElementById('apod-title');
+const apodExplanation = document.getElementById('apod-explanation');
+const generateButton = document.getElementById('generate-button');
+
+function getRandomAPOD() {
+    fetch(apiUrl)
+        .then((response) => response.json())
+        .then((data) => {
+            apodImage.src = data.url;
+            apodTitle.textContent = data.title;
+            apodExplanation.textContent = data.explanation;
+        })
+        .catch((error) => console.error('Error fetching APOD:', error));
+}
+
+generateButton.addEventListener('click', getRandomAPOD);
+
+</script>
+</html>

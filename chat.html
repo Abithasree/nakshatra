@@ -1,0 +1,155 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Simple Chat App</title>
+  
+  <link rel="stylesheet" type="text/css" href="welcome.css">
+  <link rel="stylesheet" type="text/css" href="chat.css">
+
+</head>
+
+<style>
+  #messages{
+    /* background-image: url('movingsky.gif');
+    background-repeat: no-repeat;
+    background-size: contain; */
+
+  }
+    body{
+    /* background-image: url(/movingsky.gif); */
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+    
+    ul {
+  list-style-type: none;
+  /* border: 2px solid blue; */
+  /* background-color: rgb(32, 14, 65); */
+}
+li {
+  margin: 5px;
+  color: white;
+  background-color: rgba(5, 14, 16, 0.349);
+}
+
+
+
+    
+</style>
+<body>
+
+  <nav class="navbar">
+    <div class="container">
+   
+        <a href="http://localhost/hcl%20project%20test/welcome.php" class="logo"> <img src="images\png\logo-white-small.png" alt="Astronomy Club Logo"></a>
+        <ul class="nav-links">
+            <li><a href="http://localhost/hcl%20project%20test/welcome.php">Home</a></li>
+            
+            <li><a href="http://127.0.0.1:5500/game.html">Game</a></li>
+            <li class="dropdown">
+                <a href="#">Events</a>
+                <div class="dropdown-content">
+                    <a href="http://localhost/hcl%20project%20test/event_form.php">Host an Event</a>
+                    <a href="http://localhost/hcl%20project%20test/display_events.php">Ongoing Events</a>
+                    
+                    
+                </div>
+            </li>
+            <li><a href="http://localhost:5000/">Chat</a></li>
+            
+            <!-- ... (previous HTML code) ... -->
+            <li class="dropdown">
+                <a href="#">News</a>
+                <div class="dropdown-content">
+                    <a href="http://127.0.0.1:5500/spod.html">space pic of day</a>
+                    <a href="http://127.0.0.1:5500/spaceWnews.html">space weather news</a>
+                    <a href="http://127.0.0.1:5500/meteors.html">meteorology news</a>
+                    
+                </div>
+            </li>
+<!-- ... (continue with other navigation items) ... -->
+<!-- #region -->    <li class="dropdown">
+                <a href="#">Others</a>
+                <div class="dropdown-content">
+                    <a href="#">Pitch your idea!</a>
+                    <a href="#">Borrow books</a>
+                    
+                    
+                </div>
+            </li>   
+
+            <!-- <li><a href="#">Gallery</a></li> -->
+            
+            <li> <a href="http://localhost/hcl%20project%20test/logout.php">Logout</a></li>
+        </ul>
+    </div>
+</nav>
+  <!-- <ul id="messages"></ul>
+  <form id="message-form">
+    <div class="box">
+    <input id="message-input" autocomplete="off" />
+    <button id="send-button">launch</button>
+  </div>
+  </form> -->
+
+  <!-- ... Your existing HTML ... -->
+
+<body>
+  <div class="chat-container">
+    <ul id="messages"></ul>
+  </div>
+  <form id="message-form">
+    <div class="box">
+      <input id="message-input" autocomplete="off" />
+      <button id="send-button">launch</button>
+    </div>
+  </form>
+  <div id="typing-indicator"></div>
+</body>
+
+  <div id="typing-indicator" style="color: aliceblue;"></div> <!-- Add a div for typing indicator -->
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(function () {
+      var socket = io();
+
+      // Prompt the user for a username
+      var username = prompt('Enter your username:');
+      if (!username) {
+        username = 'Guest'; // Use 'Guest' as the default username if none is provided
+      }
+
+      // Send the username to the server
+      socket.emit('set username', username);
+
+      $('#message-form').submit(function() {
+        var message = $('#message-input').val();
+        socket.emit('chat message', { username: username, message: message }); // Send username with the message
+        $('#message-input').val('');
+        return false;
+      });
+
+      socket.on('chat message', function(data) {
+        $('#messages').append($('<li>').text(data.username + ': ' + data.message));
+      });
+
+      // Typing indicator
+      $('#message-input').on('input', function() {
+        socket.emit('typing', username);
+      });
+
+      socket.on('user typing', function(user) {
+        $('#typing-indicator').text(user + ' is typing...');
+      });
+
+      $('#message-input').on('blur', function() {
+        $('#typing-indicator').text('');
+      });
+    });
+  </script>
+</body>
+</html>

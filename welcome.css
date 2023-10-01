@@ -1,0 +1,219 @@
+body{
+    background-image: url('images/simpl2.avif');
+    /* background-size: cover; */
+    /* background-color: black; */
+    width: 100%;
+    overflow-x: hidden;
+    
+    
+}
+
+h2{
+    color: aliceblue;
+}
+
+
+.say_hi{
+    margin-left: 5%;
+    padding-left: 20px;
+}
+
+.content{
+    /* width: 200%; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+.welcome{
+    text-align: center;
+    color: #000000c1;
+    padding: 10px;
+    margin-bottom: 20px;
+    font-family: 'Kanit', sans-serif;
+    border-radius: 50;
+    font-size: larger;
+    text-shadow:2px 2px #ffffff8c;
+    
+}
+.welcome h4{
+    font-weight: 400;
+}
+.content .planet{
+    position: absolute;
+    z-index: -1;
+}
+
+
+.about{
+    margin-top: 5%;
+}
+
+
+
+
+
+/* nav starting*/
+body {
+    font-family: Arial, sans-serif;
+    /* background-color: #000; */
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    z-index: -2;
+    /* position: fixed; */
+}
+
+
+.planet{
+
+    animation: animName 27s linear infinite;
+}
+
+@keyframes animName {
+    from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(359deg);
+      }
+   }
+
+
+
+
+
+
+
+
+
+/* styles.css */
+/* ... (previous CSS styles) ... */
+
+/* Style the dropdown container */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Style the dropdown content (hidden by default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #000;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 5;
+}
+
+/* Style the dropdown links */
+.dropdown-content a {
+    color: #fff;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block; /* Change display to "block" */
+}
+
+/* Change color on hover */
+.dropdown-content a:hover {
+    background-color: #00bfff;
+    color: #fff;/* Change the color to a light blue when hovering */
+}
+
+/* Display the dropdown content when the mouse is over the dropdown item */
+.dropdown:hover .dropdown-content {
+    display: block;
+    color: rgb(9, 0, 0);
+}
+
+
+.logo {
+    text-decoration: none;
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+    display: flex; /* Add this to make it a flex container */
+    align-items: center; /* Align the logo vertically */
+}
+
+.logo img {
+     /* Adjust the width to your preferred size */
+    height: 80px; /* Maintain the aspect ratio */
+    margin-right: 25%; /* Add spacing between the logo and navigation links */
+}
+
+
+.container {
+    width: 150%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px 0;
+    width: 100%;
+    margin-left: 10px;
+    
+}
+
+.logo {
+    background-image: url('images/png/logo-white.png');
+    text-decoration: none;
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.nav-links li {
+    margin-right: 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #00bfff; /* Change the color to a light blue when hovering */
+
+}
+
+/* @media screen and (max-width: -768px) {
+    .navbar {
+        padding: 10px 0;
+    }
+
+    .container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .logo {
+        margin-bottom: 20px; 
+    }
+
+    .nav-links {
+        flex-direction: column;
+    }
+
+    .nav-links li {
+        margin: 10px 0; 
+    }
+} */
+/* nav ending */

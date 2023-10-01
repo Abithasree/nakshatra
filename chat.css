@@ -1,0 +1,68 @@
+/* chat.css */
+body {
+    background-image: url('/sick.gif');
+    margin: 0; /* Add margin 0 to remove default body margin */
+  }
+  
+  
+  
+  /* ... Your existing CSS ... */
+  
+#messages{
+    height: 500px;
+    /* background-image: url('/movingsky.gif'); */
+    width: 500px;
+    margin-left: auto;
+  margin-right: auto;
+  border-radius: 5%;
+}
+#message-form{
+    height: 10px;
+    margin-left: auto;
+  margin-right: auto;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+
+}
+#message-input{
+   
+width: 350px;
+height: 21px;
+}
+#send-button {
+    background: linear-gradient(transparent 95%, #000 5%);
+    color: #fff;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+    transition: background-position 0.3s ease;
+  }
+  
+  #send-button:hover {
+    background-position: 0 100%;
+  }
+  
+  .chat-container {
+    margin-top: 5%;
+    margin-bottom: 2%;
+    height: 500px; /* Set the maximum height for the chat container */
+    overflow-y: auto;
+    overflow-x: hidden; /* Add vertical scrollbar when content exceeds the max height */
+    
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5%;
+    /* padding: 10px; Add some padding for better spacing */
+    background-image: url('/movingsky.gif');
+  }
+

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asteroid Close Approach Search</title>
+    <link rel="stylesheet" type="text/css" href="welcome.css">
+</head>
+<style>
+    
+     body{
+        background-image: url('whitespace.jpg');
+        background-color: #acacac;
+        background-position: 2px;
+        color: black;
+        z-index: 100;
+        background-attachment: fixed;
+    }
+    
+    .superclass{
+        font-family: cursive;
+        margin: auto auto;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+    .nav{
+   background-color: #84879a;
+}
+.logo{
+    background-image: url('images\png\logo-no-background.png');
+}
+.search{
+    width: min-content;
+    margin-left: 15px;
+    margin: auto auto;
+
+}
+#results{
+    background-color: #e9e9e936;
+    width: 600px;
+    margin: auto auto;
+    border-radius: 15px;
+}
+</style>
+<body>
+    <nav class="navbar">
+        <div class="container">
+       
+            <a href="http://localhost/hcl%20project%20test/welcome.php" class="logo"> <img src="images\png\logo-white-small.png" alt="Astronomy Club Logo"></a>
+            <ul class="nav-links">
+                <li><a href="http://localhost/hcl%20project%20test/welcome.php">Home</a></li>
+                
+                <li><a href="http://127.0.0.1:5500/game.html">Game</a></li>
+                <li class="dropdown">
+                    <a href="#">Events</a>
+                    <div class="dropdown-content">
+                        <a href="http://localhost/hcl%20project%20test/event_form.php">Host an Event</a>
+                        <a href="http://localhost/hcl%20project%20test/display_events.php">Ongoing Events</a>
+                        
+                        
+                    </div>
+                </li>
+                <li><a href="http://localhost:5000/">Chat</a></li>
+                
+                <!-- ... (previous HTML code) ... -->
+                <li class="dropdown">
+                    <a href="#">News</a>
+                    <div class="dropdown-content">
+                        <a href="http://127.0.0.1:5500/spod.html">space pic of day</a>
+                        <a href="http://127.0.0.1:5500/spaceWnews.html">space weather news</a>
+                        <a href="http://127.0.0.1:5500/meteors.html">meteorology news</a>
+                        
+                    </div>
+                </li>
+<!-- ... (continue with other navigation items) ... -->
+<!-- #region -->    <li class="dropdown">
+                    <a href="#">Others</a>
+                    <div class="dropdown-content">
+                        <a href="#">Pitch your idea!</a>
+                        <a href="#">Borrow books</a>
+                        
+                        
+                    </div>
+                </li>   
+
+                <!-- <li><a href="#">Gallery</a></li> -->
+                
+                <li> <a href="http://localhost/hcl%20project%20test/logout.php">Logout</a></li>
+            </ul>
+        </div>
+    </nav><br><br>
+    <div class="superclass">
+    <h1>Asteroid Close Approach Search</h1>
+    <h3>Are you an Amateur Astronomer who love star gazing and observing celestial objects like aestroid or meteroids? <br>this is your place to find meteroids that has closest approach during the specific date. Happy star gazing!</h3>
+    <div class="search">
+    <label for="search-date">Date:</label>
+    <input type="date" id="search-date" required>
+    
+    <button id="search-button">Search</button></div>
+    
+    <div id="results">
+        <!-- Results will be displayed here -->
+    </div>
+    
+    <script>
+            const apiKey = 'j10VPe5poiUyN9k2sqOG4v5g3zCVDvhV1fOXYFB3';
+
+        const apiUrl = 'https://api.nasa.gov/neo/rest/v1/feed';
+
+        function fetchAsteroids(date) {
+            const url = `${apiUrl}?start_date=${date}&end_date=${date}&api_key=${apiKey}`;
+
+            fetch(url)
+                .then((response) => response.json())
+                .then((data) => {
+                    displayAsteroids(data);
+                })
+                .catch((error) => console.error('Error fetching data:', error));
+        }
+
+        function displayAsteroids(data) {
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = ''; // Clear previous results
+
+            // Loop through the data and display relevant information
+            for (const date in data.near_earth_objects) {
+                const asteroids = data.near_earth_objects[date];
+                for (const asteroid of asteroids) {
+                    const asteroidInfo = document.createElement('div');
+                    asteroidInfo.innerHTML = `
+                        <h3>Name: ${asteroid.name}</h3>
+                        <p>Close Approach Date: ${date}</p>
+                        <p>Miss Distance: ${asteroid.close_approach_data[0].miss_distance.kilometers} km</p>
+                        <p>Relative Velocity: ${asteroid.close_approach_data[0].relative_velocity.kilometers_per_hour} km/h</p>
+                        <hr>
+                    `;
+                    resultsDiv.appendChild(asteroidInfo);
+                }
+            }
+        }
+
+        const searchButton = document.getElementById('search-button');
+        searchButton.addEventListener('click', () => {
+            const searchDate = document.getElementById('search-date').value;
+            fetchAsteroids(searchDate);
+        });
+    </script></div>
+</body>
+</html>

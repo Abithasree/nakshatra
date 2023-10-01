@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space Weather Notifications (DONKI)</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="welcome.css">
+</head>
+<style>
+     body{
+        background-image: url('whitespace.jpg');
+        background-color: #acacac;
+        background-position: 2px;
+        color: black;
+        z-index: 100;
+        background-attachment: fixed;
+    }
+    
+    .superclass{
+        font-family: cursive;
+        margin: auto auto;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+    #load-notifications{
+        width: min-content;
+        margin: auto auto;
+    }
+</style>
+<body>
+    <nav class="navbar">
+        <div class="container">
+       
+            <a href="http://localhost/hcl%20project%20test/welcome.php" class="logo"> <img src="images\png\logo-white-small.png" alt="Astronomy Club Logo"></a>
+            <ul class="nav-links">
+                <li><a href="http://localhost/hcl%20project%20test/welcome.php">Home</a></li>
+                
+                <li><a href="http://127.0.0.1:5500/game.html">Game</a></li>
+                <li class="dropdown">
+                    <a href="#">Events</a>
+                    <div class="dropdown-content">
+                        <a href="http://localhost/hcl%20project%20test/event_form.php">Host an Event</a>
+                        <a href="http://localhost/hcl%20project%20test/display_events.php">Ongoing Events</a>
+                        
+                        
+                    </div>
+                </li>
+                <li><a href="http://localhost:5000/">Chat</a></li>
+                
+                <!-- ... (previous HTML code) ... -->
+                <li class="dropdown">
+                    <a href="#">News</a>
+                    <div class="dropdown-content">
+                        <a href="http://127.0.0.1:5500/spod.html">space pic of day</a>
+                        <a href="http://127.0.0.1:5500/spaceWnews.html">space weather news</a>
+                        <a href="http://127.0.0.1:5500/meteors.html">meteorology news</a>
+                        
+                    </div>
+                </li>
+<!-- ... (continue with other navigation items) ... -->
+<!-- #region -->    <li class="dropdown">
+                    <a href="#">Others</a>
+                    <div class="dropdown-content">
+                        <a href="#">Pitch your idea!</a>
+                        <a href="#">Borrow books</a>
+                        
+                        
+                    </div>
+                </li>   
+
+                <!-- <li><a href="#">Gallery</a></li> -->
+                
+                <li> <a href="http://localhost/hcl%20project%20test/logout.php">Logout</a></li>
+            </ul>
+        </div>
+    </nav><br><br>
+    <div class="superclass">
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Space Weather Notifications (DONKI)</title>
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        </head>
+        <body>
+            <h1>Space Weather Notifications (DONKI)</h1>
+            
+            <button id="load-notifications">Load Latest Notifications</button>
+            
+            <div id="notifications">
+                <!-- Notifications will be displayed here -->
+            </div>
+            
+            <script>
+                const apiKey = 'j10VPe5poiUyN9k2sqOG4v5g3zCVDvhV1fOXYFB3';
+
+                const apiUrl = 'https://api.nasa.gov/DONKI';
+        
+                $('#load-notifications').click(() => {
+                    const startDate = '2022-01-01'; // Start date in yyyy-MM-dd format
+                    const endDate = '2023-01-31';   // End date in yyyy-MM-dd format
+                    const type = 'all'; // Change to specific type if needed
+        
+                    const url = `${apiUrl}/notifications?startDate=${startDate}&endDate=${endDate}&type=${type}&api_key=${apiKey}`;
+        
+                    $.getJSON(url, (data) => {
+                        displayNotifications(data);
+                    }).fail((jqXHR, textStatus, errorThrown) => {
+                        console.error('Error fetching data:', errorThrown);
+                    });
+                });
+        
+                function displayNotifications(data) {
+                    const notificationsDiv = $('#notifications');
+                    notificationsDiv.empty(); // Clear previous notifications
+        
+                    if (data && data.length > 0) {
+                        data.forEach((notification) => {
+                            const notificationInfo = $('<div>');
+                            notificationInfo.html(`
+                                <h3>${notification.messageType}</h3>
+                                <p>Event Type: ${notification.activityID}</p>
+                                <p>Start Time: ${notification.startTime}</p>
+                                <p>End Time: ${notification.endTime}</p>
+                                <hr>
+                            `);
+                            notificationsDiv.append(notificationInfo);
+                        });
+                    } else {
+                        notificationsDiv.html('<p>No notifications available.</p>');
+                    }
+                }
+            </script>
+        </body>
+        </html>
+        
+    </script></div>
+</body>
+</html>

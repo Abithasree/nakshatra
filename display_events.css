@@ -1,0 +1,29 @@
+/* body{
+    background-color: white;
+    color: aliceblue;
+    
+} */
+
+.superclass{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.event{
+    border-color: aliceblue;
+    border: 5px;
+   background-color:#9fa4b8;
+   border-radius: 5px;
+    width: 500px;
+    /* min-height: 500px; */
+    text-align: center;
+    justify-content: left;
+    
+}
+
+.poster{
+    width: 250px;
+}

@@ -4,19 +4,19 @@
 
 Nakshatra is an interactive web application designed to connect astronomy enthusiasts within a dedicated community. It offers an engaging platform for members to come together and indulge their passion for cosmos. Here's what Nakshatra (an Astronomy club) application entails:
 
-1. Astronomy community Hub *(chat application)*: virtual meeting place of users
+1. Astronomy community Hub *(chat application)*: virtual meeting place of users 
 
 2. Real time space weather alerts: timely updates of space. weather updates using NASA API (DONKI)
 
 3. Space picture of the day: everyday a snapshot of space is provided, which is fetched through API calls. which is to serve as a tool for learning ( API: APOD)
 
-4. login/ Membership portal: user account registration
+4. login/ Membership portal: user account registration (with MD5 hashing of passwords)
 
-5. Space quiz: challenging entertainment of leisure & fun.
+5. Space quiz: challenging entertainment of leisure & fun. (made with scratch tool)
 
 6. aestroid exploration: find aestroids that are close to earth at the given time by the users. Also gets information and details related to aestroid.(API: Asteroids - NeoWs)
 
-7.  host Events: schedule the events and also display the upcoming events
+7.  host Events: schedule the events and also display the upcoming events (using PHPMyAdmin and local database)
 
 # Future Scope Of the project
 
